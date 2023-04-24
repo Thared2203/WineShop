@@ -60,7 +60,7 @@ $stmt->closeCursor();
 // creates table called Order
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Order;
-CREATE TABLE Order 
+CREATE TABLE Order
 (OrderID Int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 PeopleID Int(8) NOT NULL,
 Date Varchar(5) NOT NULL,
