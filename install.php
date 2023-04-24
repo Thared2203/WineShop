@@ -57,7 +57,7 @@ percentoff Decimal(2) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 
-// creates table called Order
+// creates table called Orders
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders
@@ -70,7 +70,7 @@ Delivered Int(1) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 
-// creates table called Basket
+// creates table called Baskets
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Baskets;
 CREATE TABLE Baskets
