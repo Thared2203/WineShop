@@ -59,8 +59,8 @@ $stmt->closeCursor();
 
 // creates table called Order
 
-$stmt = $conn->prepare("DROP TABLE IF EXISTS Order;
-CREATE TABLE Order
+$stmt = $conn->prepare("DROP TABLE IF EXISTS Orders;
+CREATE TABLE Orders
 (OrderID Int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 PeopleID Int(8) NOT NULL,
 Date Varchar(5) NOT NULL,
@@ -72,8 +72,8 @@ $stmt->closeCursor();
 
 // creates table called Basket
 
-$stmt = $conn->prepare("DROP TABLE IF EXISTS Basket;
-CREATE TABLE Basket 
+$stmt = $conn->prepare("DROP TABLE IF EXISTS Baskets;
+CREATE TABLE Baskets
 (OrderID Int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 WineID Int(4) NOT NULL,
 Quantity Int(3) NOT NULL)");
