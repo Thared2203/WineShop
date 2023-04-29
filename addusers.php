@@ -10,7 +10,7 @@ $stmt = $conn->prepare("INSERT INTO People (PeopleID,Email,Password,Forename,Sur
 
 $stmt->bindParam(':Email', $_POST["Email"]);
 $stmt->bindParam(':Password', $_POST["Password"]);
-$stmt->bindParam(':Forname', $_POST["Forname"]);
+$stmt->bindParam(':Forename', $_POST["Forename"]);
 $stmt->bindParam(':Surname', $_POST["Surname"]);
 $stmt->bindParam(':TelephoneNumber', $_POST["TelephoneNumber"]);
 $stmt->bindParam(':Postcode', $_POST["Postcode"]);

@@ -2,7 +2,7 @@
 <html>
 <?php
 include_once("connection.php");
-$stmt = $conn->prepare("INSERT INTO People (PeopleID,Email,Password,Forename,Role)VALUES (null,:Email,:Password,Forename,:role)");
+$stmt = $conn->prepare("INSERT INTO TblUser (PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,CardNumber,ExpiryDate,Manager,Role)VALUES (null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Manager,:Role)");
 ?>
 
 <head>

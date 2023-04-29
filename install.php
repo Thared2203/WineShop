@@ -79,3 +79,4 @@ WineID Int(4) NOT NULL,
 Quantity Int(3) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
+?>
