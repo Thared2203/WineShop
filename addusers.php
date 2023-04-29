@@ -7,7 +7,7 @@ header('Location:users.php');
 //print_r($_POST);
 $stmt = $conn->prepare("INSERT INTO People (PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,CardNumber,ExpiryDate,Manager)VALUES (null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Manager)");
 
-
+// This allows me to get all the details of the person who is signing up which I can store
 $stmt->bindParam(':Email', $_POST["Email"]);
 $stmt->bindParam(':Password', $_POST["Password"]);
 $stmt->bindParam(':Forename', $_POST["Forename"]);

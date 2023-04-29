@@ -4,49 +4,23 @@
 <head>
 
 <title> Login </title>
+
 </head>
 
 <body>
-    <div class="header">            
-    <h1>Login</h1><br>
+    <div>            
+        <h1>Login</h1><br>
     </div>
-    <div class="body">
+    <div>
             <p>Please enter your credentials to login</p>       
             <form action="loginprocess.php" method= "POST">
+            <!-- When the person has signed in the only thing they need to remeber is their forename and password. This allows a quick and easy way to log in -->
             <input type="text" placeholder="Forename" name="Forename"><br>
             <input type="password" placeholder="password" name="Pword"><br>
             <input type="submit" value="Login">
-</div>
-    
             </form>
+    </div>
+    
+            
 </body>
-            <style>
-
-
-body {
-
-margin: 0;
-
-}
-
-/* Style the header  – this creates a style for header*/
-
-.header {
-
-background-color:lightBlue;
-;
-
-padding: 20px;
-
-text-align: center;
-
-}
-
-.body {
-background-color:lightSeaGreen;
-
-padding: 20px;
-
-}
-
-</style>
+</html>   

@@ -11,36 +11,6 @@ $stmt = $conn->prepare("INSERT INTO TblUser (UserID,Gender,Surname,Forename,Pass
     <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-
-body {
-
-margin: 0;
-
-}
-
-/* Style the header  – this creates a style for header*/
-
-.header {
-
-background-color:lightBlue;
-;
-
-padding: 20px;
-
-text-align: center;
-
-}
-
-.body {
-background-color:lightSeaGreen;
-
-text-align: center;
-
-padding: 20px;
-}
-
-</style>
 
 </head>
 <body>

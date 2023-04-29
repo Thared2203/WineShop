@@ -11,31 +11,7 @@ $stmt = $conn->prepare("INSERT INTO TblUser (PeopleID,Email,Password,Forename,Su
     <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
 
-margin: 0;
-
-}
-
-/* Style the header  – this creates a style for header*/
-
-.header {
-
-background-color:lightBlue;
-;
-
-padding: 20px;
-
-text-align: center;
-
-}
-
-.body {
-background-color:lightSeaGreen;
-}
-
-</style>
 </head>
 <body>
 <div class="header">
@@ -67,6 +43,7 @@ $stmt = $conn->prepare("SELECT * FROM people");
 $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+
 
 ?>
 </body>
