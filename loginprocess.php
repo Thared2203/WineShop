@@ -2,6 +2,9 @@
 session_start();
 include_once ("connection.php");
 array_map("htmlspecialchars", $_POST);
+
+header('Location:login.php');
+
 $stmt = $conn->prepare("SELECT * FROM People WHERE Forename =:Forename ;" );
 
 $stmt->bindParam(':Forename', $_POST['Forename']);
@@ -16,5 +19,5 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
         header('Location: login.php');
     }
 }
-$conn=null;
+$conn=null; //closes the
 ?>

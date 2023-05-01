@@ -2,8 +2,12 @@
 <html>
 <?php
 include_once("connection.php");
-$stmt = $conn->prepare("INSERT INTO TblUser (PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,CardNumber,ExpiryDate,Manager,Role)VALUES (null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Manager,:Role)");
+$stmt = $conn->prepare("INSERT INTO TblUser 
+(PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,CardNumber,ExpiryDate,Manager,Role)
+VALUES 
+(null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Manager,:Role)"); 
 ?>
+<!-- This means that all the varuable are set to 0 before the input apart from the PeopleID as this needs to increment every time -->
 
 <head>
     
