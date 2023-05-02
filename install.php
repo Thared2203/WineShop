@@ -15,7 +15,7 @@ Postcode VARCHAR(7) NOT NULL,
 Address VARCHAR(50) NOT NULL,
 CardNumber VARCHAR(500) NOT NULL,
 ExpiryDate VARCHAR(5) NOT NULL,
-Manager Int(1) Not Null)");
+Admin Int(1) Not Null)");
 $stmt->execute();
 $stmt->closeCursor();
 

@@ -4,9 +4,9 @@ if(isset($_SESSION['loggedin']))
 {
     unset($_SESSION['loggedin']);
 }
-if(isset($_SESSION['tuck']))
+if(isset($_SESSION['wine']))
 {
-    unset($_SESSION['tuck']);
+    unset($_SESSION['wine']);
 }
 header("Location:menu.php");
 ?>
