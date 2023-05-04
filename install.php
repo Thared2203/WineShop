@@ -28,7 +28,7 @@ CREATE TABLE Wine
 WineName VARCHAR(20) NOT NULL,
 WineCategory VARCHAR(20) NOT NULL,
 WineDescription VARCHAR(100) NOT NULL,
-WinePrice Decimal(4) NOT NULL,
+WinePrice float(5) NOT NULL,
 WineStock Int(3) NOT NULL,
 Country Varchar(15))");
 $stmt->execute();

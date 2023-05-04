@@ -1,14 +1,16 @@
 <?php
 session_start();
 if( $_SESSION["Admin"]!=1){
-        header('Location:menu2.php');
+  header('Location:menu2.php');
 }
 ?>
 <!DOCTYPE html>
 <html>
 <?php
 include_once("connection.php");
-$stmt = $conn->prepare("INSERT INTO wine (WineID, WineName, WineCategory, WineDescription, WinePrie, WineStock, Country)VALUES (null,:WineName,:WineCtegory,:WineDescription,:WinePrice,:WineStock,:Country)");
+$stmt = $conn->prepare("INSERT INTO wine (WineID, WineName, WineCategory, WineDescription, WinePrice, WineStock, Country)
+VALUES 
+(null,:WineName,:WineCtegory,:WineDescription,:WinePrice,:WineStock,:Country)");
 ?>
 
 <head>
@@ -34,7 +36,7 @@ $stmt = $conn->prepare("INSERT INTO wine (WineID, WineName, WineCategory, WineDe
   WineDescription:<input type="text" name="WineDescription"><br>
   WinePrice:<input type="text" name="WinePrice"><br>
   WineStock:<input type="text" name="WineStock"><br>
-  Country:<input type="text" name="country"><br>
+  Country:<input type="text" name="Country"><br>
   <input type="submit" value="Add Wine">
 </form>
 </div>

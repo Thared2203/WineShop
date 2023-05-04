@@ -20,7 +20,7 @@ include_once("connection.php");
 </div>
 <div class="body">
 <a href="users.php"> Sign up</a>
-<a href="login.php"> login</a>
+<a href="login.php"> Login</a>
 </div>
 </body>
 </html>
