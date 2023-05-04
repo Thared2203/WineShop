@@ -19,6 +19,7 @@ Admin Int(1) Not Null)");
 $stmt->execute();
 $stmt->closeCursor();
 
+
 //creates table called Wine
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Wine;
@@ -27,10 +28,9 @@ CREATE TABLE Wine
 WineName VARCHAR(20) NOT NULL,
 WineCategory VARCHAR(20) NOT NULL,
 WineDescription VARCHAR(100) NOT NULL,
-WineImage VARCHAR(100) NOT NULL,
 WinePrice Decimal(4) NOT NULL,
 WineStock Int(3) NOT NULL,
-OfferID Int(3) NOT NULL)");
+Country Varchar(15))");
 $stmt->execute();
 $stmt->closeCursor();
 
@@ -42,7 +42,7 @@ CREATE TABLE Review
 WineID Int(4) NOT NULL,
 PeopleID Int(8) NOT NULL,
 Stars VARCHAR(20) NOT NULL,
-ReviewText VARCHAR(30) NOT NULL)");
+Review VARCHAR(30) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 

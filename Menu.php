@@ -2,12 +2,12 @@
 <html>
 <?php
 include_once("connection.php");
-$stmt = $conn->prepare("INSERT INTO TblUser (UserID,Gender,Surname,Forename,Password,House,Year,Role)VALUES (null,:gender,:surname,:forename,:password,:house,:year,:role)");
+
 ?>
 
 <head>
     
-    <title>Tuck Shop</title>
+    <title>Wine Shop</title>
     <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +16,11 @@ $stmt = $conn->prepare("INSERT INTO TblUser (UserID,Gender,Surname,Forename,Pass
 <body>
 <div class="header">
 
-<h1>Menu</h1>
+<h1>Sign up</h1>
 </div>
 <div class="body">
-<a href="login.php"> login</a>
 <a href="users.php"> Sign up</a>
+<a href="login.php"> login</a>
 </div>
 </body>
 </html>
