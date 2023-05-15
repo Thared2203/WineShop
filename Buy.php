@@ -28,6 +28,9 @@ $stmt = $conn->prepare("INSERT INTO baskets (OrderID, WineID, Quantity)VALUES (n
     </form>
   </div>
 </div>
+</nav>
+
+
 <nav>
 <select name="Wine Colour">
   <option value="WineColour">WineColour</option>
