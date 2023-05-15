@@ -23,7 +23,7 @@ $stmt = $conn->prepare("INSERT INTO baskets (OrderID, WineID, Quantity)VALUES (n
 <div class="topnav">
   <div class="search-container">
     <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
+      <input type="text" placeholder="Search..." name="search">
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -52,15 +52,16 @@ $stmt = $conn->prepare("INSERT INTO baskets (OrderID, WineID, Quantity)VALUES (n
   <option value="England">England</option>
 </select>
 
+
 <select name="Wine Price">
   <option value="Price">Price</option>
   <option value="HightoLow">HightoLow</option>
   <option value="LowtoHigh">LowtoHigh</option>
-
 </select>
-
 </nav>
 
+<body>
+    
 <?php
 include_once('connection.php');
 

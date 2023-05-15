@@ -3,7 +3,7 @@ include_once("connection.php");
 
 //creates table called People
 
-$hashed_password = password_hash("password", PASSWORD_DEFAULT);
+$hashed_password = password_hash("password", PASSWORD_DEFAULT);  //increases security
 $stmt = $conn->prepare("DROP TABLE IF EXISTS People;
 CREATE TABLE People 
 (PeopleID Int(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -12,7 +12,7 @@ Password VARCHAR(500) NOT NULL,
 Forename VARCHAR(20) NOT NULL,
 Surname VARCHAR(30) NOT NULL,
 TelephoneNumber VARCHAR(11) NOT NULL,
-Postcode VARCHAR(7) NOT NULL,
+Postcode VARCHAR(8) NOT NULL,
 Address VARCHAR(50) NOT NULL,
 CardNumber VARCHAR(500) NOT NULL,
 ExpiryDate VARCHAR(5) NOT NULL,
