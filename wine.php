@@ -1,7 +1,9 @@
 <?php
 session_start();
+print_r($_SESSION);
 if( $_SESSION["Admin"]!=1){
-  header('Location:menu2.php');
+  //header('Location:menu2.php');
+  echo ("redirecting");
 }
 ?>
 <!DOCTYPE html>

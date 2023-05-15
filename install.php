@@ -3,6 +3,7 @@ include_once("connection.php");
 
 //creates table called People
 
+$hashed_password = password_hash("password", PASSWORD_DEFAULT);
 $stmt = $conn->prepare("DROP TABLE IF EXISTS People;
 CREATE TABLE People 
 (PeopleID Int(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -28,9 +29,9 @@ CREATE TABLE Wine
 WineName VARCHAR(20) NOT NULL,
 WineCategory VARCHAR(20) NOT NULL,
 WineDescription VARCHAR(100) NOT NULL,
-WinePrice float(5) NOT NULL,
+WinePrice Decimal(3,2) NOT NULL,
 WineStock Int(3) NOT NULL,
-Country Varchar(15))");
+Country Varchar(15) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 
@@ -48,14 +49,14 @@ $stmt->closeCursor();
 
 //creates table called Offer
 
-$stmt = $conn->prepare("DROP TABLE IF EXISTS Offer;
-CREATE TABLE Offer 
-(OfferID Int(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-OfferName Varchar(30) NOT NULL,
-OfferType Varchar(10) NOT NULL,
-percentoff Decimal(2) NOT NULL)");
-$stmt->execute();
-$stmt->closeCursor();
+// $stmt = $conn->prepare("DROP TABLE IF EXISTS Offer;
+// CREATE TABLE Offer 
+// (OfferID Int(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// OfferName Varchar(30) NOT NULL,
+// OfferType Varchar(10) NOT NULL,
+// percentoff int(2) NOT NULL)");
+// $stmt->execute();
+// $stmt->closeCursor();
 
 // creates table called Orders
 

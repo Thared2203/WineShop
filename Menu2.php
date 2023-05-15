@@ -22,7 +22,7 @@ include_once("connection.php");
 </div>
 <div class="body">
 <a href="wine.php"> Add Wine</a>
-<a href="buywine.php"> Buy Wine</a>
+<a href="buy.php"> Buy Wine</a>
 <a href="logout.php"> Log Out</a>
 </div>
 </body>

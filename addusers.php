@@ -10,7 +10,8 @@ VALUES
 (null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Admin)");
 
 // This allows me to get all the details of the person who is signing up which I can store
-$hashed_password = password_hash($_POST["Password"], PASSWORD_DEFAULT);
+
+$hashed_password = password_hash($_POST["Password"], PASSWORD_DEFAULT); //hashes password for security
 $stmt->bindParam(':Email', $_POST["Email"]);
 $stmt->bindParam(':Password', $hashed_password);
 $stmt->bindParam(':Forename', $_POST["Forename"]);
