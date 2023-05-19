@@ -2,8 +2,12 @@
 session_start();
 print_r($_SESSION);
 if($_SESSION["Admin"]!=1){
-  //header('Location:menu2.php');
-  //echo ("redirecting");
+  header('Location:menu2.php');
+  echo ("redirecting");
+
+if($_SESSION["Admin"]=1){
+  header('Location:wine.php');
+}
 }
 ?>
 <!DOCTYPE html>

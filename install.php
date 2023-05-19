@@ -27,9 +27,9 @@ $stmt = $conn->prepare("DROP TABLE IF EXISTS Wine;
 CREATE TABLE Wine 
 (WineID Int(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 WineName VARCHAR(20) NOT NULL,
-WineCategory VARCHAR(20) NOT NULL,
+WineColour VARCHAR(20) NOT NULL,
 WineDescription VARCHAR(100) NOT NULL,
-WinePrice Decimal(3,2) NOT NULL,
+WinePrice Decimal(6,2) NOT NULL,
 WineStock Int(3) NOT NULL,
 Country Varchar(15) NOT NULL)");
 $stmt->execute();
@@ -47,16 +47,6 @@ Review VARCHAR(30) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 
-//creates table called Offer
-
-// $stmt = $conn->prepare("DROP TABLE IF EXISTS Offer;
-// CREATE TABLE Offer 
-// (OfferID Int(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-// OfferName Varchar(30) NOT NULL,
-// OfferType Varchar(10) NOT NULL,
-// percentoff int(2) NOT NULL)");
-// $stmt->execute();
-// $stmt->closeCursor();
 
 // creates table called Orders
 
