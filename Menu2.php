@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
+
 include_once("connection.php");
 
 ?>
@@ -21,7 +22,7 @@ include_once("connection.php");
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="javascript:void(0)">Simon Tilley's Wine Shop</a>
+    <a class="navbar-brand" >Simon Tilley's Wine Shop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -34,7 +35,10 @@ include_once("connection.php");
           <a class="nav-link" href="login.php">Log in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0)">Link</a>
+          <a class="nav-link" href="logout.php">Log out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="wine.php">Add Wine</a>
         </li>
       </ul>
       <form class="d-flex">
@@ -49,13 +53,9 @@ include_once("connection.php");
 </head>
 <body>
 <div class="header">
-<h1>Menu</h1>
+<h1>Admin's home page</h1>
 
 </div>
-<div class="body">
-<a href="wine.php"> Add Wine</a>
-<a href="buy.php"> Buy Wine</a>
-<a href="logout.php"> Log Out</a>
-</div>
+
 </body>
 </html>

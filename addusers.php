@@ -23,7 +23,13 @@ $stmt->bindParam(':CardNumber', $_POST["CardNumber"]);
 $stmt->bindParam(':ExpiryDate', $_POST["ExpiryDate"]);
 $stmt->bindParam(':Admin', $_POST["Admin"]);
 $stmt->execute();
-header('Location: menu2.php');
+if($_SESSION["Admin"]=0){
+    header('Location:menu.php');
+  
+if($_SESSION["Admin"]=1){
+    header('Location:menu2.php');
+  }
+  }
 
     }
     catch(PDOException $e)

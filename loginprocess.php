@@ -17,7 +17,7 @@ $hashed= $row['Password'];
         echo("login successful");
         $_SESSION['loggedinID']=$row["UserID"];
         $_SESSION['Admin']=$row["Admin"];
-        header('Location: menu2.php');
+        header('Location: menu.php');
 
         }else{
             header('Location: login.php');

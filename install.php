@@ -26,9 +26,9 @@ $stmt->closeCursor();
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Wine;
 CREATE TABLE Wine 
 (WineID Int(4) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-WineName VARCHAR(20) NOT NULL,
-WineColour VARCHAR(20) NOT NULL,
-WineDescription VARCHAR(100) NOT NULL,
+WineName VARCHAR(100) NOT NULL,
+WineCategory VARCHAR(20) NOT NULL,
+WineDescription VARCHAR(500) NOT NULL,
 WinePrice Decimal(6,2) NOT NULL,
 WineStock Int(3) NOT NULL,
 Country Varchar(15) NOT NULL)");

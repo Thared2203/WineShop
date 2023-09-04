@@ -32,17 +32,9 @@ include_once("connection.php");
         <li class="nav-item">
           <a class="nav-link" href="login.php">Log in</a>
         </li>
-        <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">WineColour
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="#">Red</a></li>
-    <li><a class="dropdown-item" href="#">Pink</a></li>
-    <li><a class="dropdown-item" href="#">White</a></li>
-    <li><a class="dropdown-item" href="#">Sparkling</a></li>
-    <li><a class="dropdown-item" href="#">Fortified</a></li>
-  </ul>
-</div>
-  </a>
+        <li class="nav-item">
+          <a class="nav-link" href="logout.php">Log out</a>
+        </li>
 </ul>
       <form class="d-flex">
           
@@ -52,4 +44,64 @@ include_once("connection.php");
     </div>
   </div>
 </nav>
+<div class="header">
+
+<h1>Buy new Wine</h1>
+
+</div>
+<nav>
+<div class="topnav">
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search..." name="search">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+</nav>
+
+
+<nav>
+<select name="Wine Colour">
+  <option value="WineColour">WineCategory</option>
+  <option value="Red">Red</option>
+  <option value="Pink">Pink</option>
+  <option value="White">White</option>
+  <option value="Fortified">Fortified</option>
+  <option value="Sparkling">Sparkling</option>
+</select>
+
+
+<select name="Wine Region">
+  <option value="WineRegion">WineRegion</option>
+  <option value="France">France</option>
+  <option value="Italy">Italy</option>
+  <option value="USA">USA</option>
+  <option value="Chile">Chile</option>
+  <option value="Portugal">Portugal</option>
+  <option value="England">England</option>
+</select>
+
+
+<select name="Wine Price">
+  <option value="Price">Price</option>
+  <option value="HightoLow">HightoLow</option>
+  <option value="LowtoHigh">LowtoHigh</option>
+</select>
+</nav>
+
+<body>
+    
+<?php
+include_once('connection.php');
+
+$stmt = $conn->prepare("SELECT * FROM wine");
+$stmt->execute();
+
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+{
+echo($row["WineName"].' '.$row["WineCategory"].' '.$row["WineDescription"].' '.$row["WinePrice"]."<br>");
+}
+?>
+</body> 
 </html>
