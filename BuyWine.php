@@ -18,11 +18,11 @@ if (isset($_SESSION["wine"])){
 	$stmt = $conn->prepare("SELECT * FROM Wine");
 	$stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-		{//uses a hidden input which contains the ID of the wine selected
+	    {//uses a hidden input which contains the ID of the wine selected
 			echo'<form action="addtobasket.php" method="post">';
-			echo($row["Name"].' '.$row["Cost"].' '.$row["Quantity"]."<input type='number' name='qty' min='1' max='100' value='1'>
+			echo($row["WineName"].' '.$row["WineCategory"].' '.$row["WineDescription"].' '.$row["Country"].' '.$row["WinePrice"].' '.$row["WineStock"]."<input type='number' name='qty' min='1' max='100' value='1'>
 			<input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br></form>");
-		}
+	    }
 
 
 

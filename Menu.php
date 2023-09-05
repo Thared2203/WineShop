@@ -46,7 +46,7 @@ include_once("connection.php");
 </nav>
 <div class="header">
 
-<h1>Buy new Wine</h1>
+<h1>Buy Fine Wine</h1>
 
 </div>
 <nav>
@@ -99,9 +99,27 @@ $stmt = $conn->prepare("SELECT * FROM wine");
 $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-{
-echo($row["WineName"].' '.$row["WineCategory"].' '.$row["WineDescription"].' '.$row["WinePrice"]."<br>");
+
+include_once('connection.php');
+
+if (isset($_SESSION["wine"])){
+	//shows number in basket if basket exists
+	echo ("Basket contains ");
+	echo count($_SESSION["wine"])-1;
+	echo (" items<br>");
+	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
-?>
+
+	$stmt = $conn->prepare("SELECT * FROM Wine");
+	$stmt->execute();
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+	    {//uses a hidden input which contains the ID of the wine selected
+			echo'<form action="addtobasket.php" method="post">';
+			echo('The name of the wine is '.$row["WineName"].'. The type of the wine is '.$row["WineCategory"].'. '.$row["WineDescription"].'. This wine is from '.$row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.'.' How many do you want to buy '."<input type='number' name='qty' min='0' max='100' value='0'>
+      <input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br></form>");
+	    }
+
+?>   
+<a href="checkout.php">Checkout</a>
 </body> 
 </html>
