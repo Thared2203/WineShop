@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<?php>
-    $Wine = $_GET["Wine"];
-    echo$Wine;
-?>
+
 <html>    
 <title>Wine</title>
 </head>
@@ -14,21 +11,25 @@
     
     <?php
     include_once('connection.php');
+    
+    
     session_start();
+    //print_r($_SESSION);
     $total=0;
     echo("<tr>");
-    //print_r($_SESSION["wine"]);
-    foreach ($_SESSION["Wine"] as $wine){
-
+    //echo("<br>");
+    //print_r($_SESSION["basket"]);
+    foreach ($_SESSION["basket"] as $wine){
+        //print_r($wine);
         echo("<br><table class='center'>");
         $stmt = $conn->prepare("SELECT * FROM wine WHERE WineID=:wineid");
-        $stmt->bindParam(':wineid', $wine["wine"]);
+        $stmt->bindParam(':wineid', $wine["WineID"]);
         $stmt->execute();
         
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                echo("<tr><td>".$row["WineName"]."</td><td> ".$wine["qty"]." </td><td>- £".number_format(($wine["qty"]*$row["WineCost"]),2)."</td></tr>");
-                $total=$total+($wine["qty"]*$row["Cost"]);
+                echo("<tr><td>".$row["WineName"]."</td><td> ".$wine["WineID"]." </td><td>- £".number_format(($wine["qty"]*$row["WinePrice"]),2)."</td></tr>");
+                $total=$total+($wine["qty"]*$row["WinePrice"]);
             }
     }
     //could do some colouring here to indicate if over balance...

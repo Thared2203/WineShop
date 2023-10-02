@@ -63,7 +63,7 @@ include_once("connection.php");
 
 <nav>
 <select name="Wine Colour">
-  <option value="WineColour">WineCategory</option>
+<option value="WineColour">WineCategory</option>
   <option value="Red">Red</option>
   <option value="Pink">Pink</option>
   <option value="White">White</option>
@@ -100,7 +100,7 @@ $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 
-include_once('connection.php');
+
 
 if (isset($_SESSION["wine"])){
 	//shows number in basket if basket exists
@@ -120,6 +120,6 @@ if (isset($_SESSION["wine"])){
 	    }
 
 ?>   
-<a href="checkout.php">Checkout</a>
+<a href="checkout.php" >Checkout</a>
 </body> 
 </html>

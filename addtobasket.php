@@ -4,18 +4,18 @@ session_start();
 #next line used to reset basket
 #$_SESSION["wine"]=array();
 
+print_r($_POST);
 
-
-if (!isset($_SESSION["wine"])){
-$_SESSION["wine"]=array();#creates basket if not created already!
+if (!isset($_SESSION["basket"])){
+    $_SESSION["basket"]=array();#creates basket if not created already!
 }
 
 
 //deal with if already in array
 $found=FALSE;
-foreach ($_SESSION["wine"] as &$entry){//& allows us to change
+foreach ($_SESSION["basket"] as &$entry){//& allows us to change
     
-    if ($entry["wine"]===$_POST["WineID"]){
+    if ($entry["WineID"]===$_POST["WineID"]){
         $found=TRUE;
         #increase basket by existing qty
         $entry["qty"]=$entry["qty"]+$_POST["qty"];   
@@ -23,7 +23,7 @@ foreach ($_SESSION["wine"] as &$entry){//& allows us to change
 }
 #echo($found."<br>");
 if ($found===FALSE){
-    array_push($_SESSION["wine"],array("wine"=>$_POST["WineId"],"qty"=>$_POST["qty"]));
+    array_push($_SESSION["basket"],array("WineID"=>$_POST["WineID"],"qty"=>$_POST["qty"]));
 }
 header('Location: Menu.php')
 ?>
