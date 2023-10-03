@@ -16,6 +16,56 @@ include_once("connection.php");
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  function showresult(str) {
+    if (str == "") {
+        document.getElementById("results").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("results").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","GetWineCategory.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+
+
+
+  function showresult2(str) {
+    if (str == "") {
+        document.getElementById("results").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("results").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","getWineRegion.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+
+
+</script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -62,36 +112,63 @@ include_once("connection.php");
 
 
 <nav>
-<select name="Wine Colour">
-<option value="WineColour">WineCategory</option>
-  <option value="Red">Red</option>
-  <option value="Pink">Pink</option>
-  <option value="White">White</option>
-  <option value="Fortified">Fortified</option>
-  <option value="Sparkling">Sparkling</option>
-</select>
+
+<select name="All" id="category" onchange="showresult(this.value)">
+<option value="All">All</option>
+<?php 
+  include_once('connection.php');
+  $stmt = $conn->prepare("SELECT DISTINCT WineCategory FROM Wine");
+	$stmt->execute();
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+	    {
+        echo('<option value="'.$row['WineCategory'].'">'.$row['WineCategory'].'</option>');
+      }?>
 
 
-<select name="Wine Region">
-  <option value="WineRegion">WineRegion</option>
-  <option value="France">France</option>
-  <option value="Italy">Italy</option>
-  <option value="USA">USA</option>
-  <option value="Chile">Chile</option>
-  <option value="Portugal">Portugal</option>
-  <option value="England">England</option>
 </select>
+
+<select name="All" id="region" onchange="showresult2(this.value)">
+<option value="All">All</option>
+<?php 
+  include_once('connection.php');
+  $stmt = $conn->prepare("SELECT DISTINCT Country FROM Wine");
+	$stmt->execute();
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+	    {
+        print_r($row);
+        echo('<option value="'.$row['Country'].'">'.$row['Country'].'</option>');
+      }?>
+
+</select>
+
 
 
 <select name="Wine Price">
   <option value="Price">Price</option>
   <option value="HightoLow">HightoLow</option>
+  <?php
+  $stmt = $conn->prepare("SELECT * from wine Order by WinePrice ASC" );
+  ?>
   <option value="LowtoHigh">LowtoHigh</option>
+  <?php
+  $stmt = $conn->prepare("SELECT * from wine Order by WinePrice DESC" );
+  ?>
 </select>
 </nav>
 
 <body>
-    
+<div id="results">
+  <?php 
+  include_once('connection.php');
+  $stmt = $conn->prepare("SELECT * FROM Wine");
+	$stmt->execute();
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+	    {//uses a hidden input which contains the ID of the wine selected
+			echo'<form action="addtobasket.php" method="post">';
+			echo('The name of the wine is '.$row["WineName"].'. The type of the wine is '.$row["WineCategory"].'. '.$row["WineDescription"].'. This wine is from '.$row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.'.' How many do you want to buy '."<input type='number' name='qty' min='0' max='100' value='0'>
+      <input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br></form>"); }?>
+	    </div>
+
 <?php
 include_once('connection.php');
 
@@ -110,16 +187,9 @@ if (isset($_SESSION["wine"])){
 	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
 
-	$stmt = $conn->prepare("SELECT * FROM Wine");
-	$stmt->execute();
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-	    {//uses a hidden input which contains the ID of the wine selected
-			echo'<form action="addtobasket.php" method="post">';
-			echo('The name of the wine is '.$row["WineName"].'. The type of the wine is '.$row["WineCategory"].'. '.$row["WineDescription"].'. This wine is from '.$row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.'.' How many do you want to buy '."<input type='number' name='qty' min='0' max='100' value='0'>
-      <input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br></form>");
-	    }
 
 ?>   
 <a href="checkout.php" >Checkout</a>
+
 </body> 
 </html>

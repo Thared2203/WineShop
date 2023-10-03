@@ -3,7 +3,7 @@
 include_once('connection.php');
 $stmt = $conn->prepare("UPDATE wine SET Quantity=Quantity-:bought WHERE WineID=:wineid");
     $stmt->bindParam(':wineid', $entry["wine"]);
-    $stmt->bindParam(':bought', $entry["qty"]);
+    $stmt->bindParam(':bought', $entry["WineStock"]);
     $stmt->execute();
     $stmt->closeCursor(); 
 
