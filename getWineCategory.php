@@ -20,7 +20,8 @@ $q = $_GET['q'];
 echo($q);
 include_once ("connection.php");
 if ($q=="All"){
-  $stmt = $conn->prepare("SELECT * from wine Order by WinePrice asc" );
+  //print_r($row)
+  $stmt = $conn->prepare("SELECT * from wine WHERE WineStock>0 Order by WinePrice DESC" );
 
   
   $stmt->execute();
@@ -32,7 +33,8 @@ if ($q=="All"){
         }
       }
 else{
-$stmt = $conn->prepare("SELECT * from wine where WineCategory =:category and WineStock>0" );
+  $stmt = $conn->prepare("SELECT * from wine WHERE WineCategory =:category and WineStock>0 Order by WinePrice DESC" );
+
 
 $stmt->bindParam(':category', $q);
 $stmt->execute();

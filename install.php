@@ -16,7 +16,8 @@ Postcode VARCHAR(8) NOT NULL,
 Address VARCHAR(50) NOT NULL,
 CardNumber VARCHAR(500) NOT NULL,
 ExpiryDate VARCHAR(5) NOT NULL,
-Admin Int(1) Not Null)");
+Admin Int(1) Not Null,
+Balance Decimal(8,2) Not Null)");
 $stmt->execute();
 $stmt->closeCursor();
 
@@ -65,9 +66,12 @@ $stmt->closeCursor();
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Baskets;
 CREATE TABLE Baskets
-(OrderID Int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+(OrderID Int(10) UNSIGNED AUTO_INCREMENT ,
 WineID Int(4) NOT NULL,
-Quantity Int(3) NOT NULL)");
+Quantity Int(3) NOT NULL,
+PRIMARY KEY (OrderID, WineID)");
 $stmt->execute();
 $stmt->closeCursor();
+
+
 ?>

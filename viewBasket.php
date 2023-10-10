@@ -13,7 +13,7 @@
     include_once('connection.php');
     
     
-    session_start();
+    //session_start();
     //print_r($_SESSION);
     $total=0;
     echo("<tr>");
@@ -28,7 +28,7 @@
         
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
             {
-                echo("<tr><td>".$row["WineName"]."</td><td> ".$wine["WineID"]." </td><td>- £".number_format(($wine["qty"]*$row["WinePrice"]),2)."</td></tr>");
+                echo("<tr><td>".$row["WineName"]."</td><td> ".$wine["qty"]." </td><td>- £".number_format(($wine["qty"]*$row["WinePrice"]),2)."</td></tr>");
                 $total=$total+($wine["qty"]*$row["WinePrice"]);
             }
     }

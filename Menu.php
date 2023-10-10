@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <?php
@@ -7,8 +9,8 @@ include_once("connection.php");
 
 <head>
     
-    <title>Wine Shop</title>
-    <meta charset="utf-8">
+  <title>Wine Shop</title>
+  <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Latest compiled and minified CSS -->
@@ -135,26 +137,24 @@ include_once("connection.php");
 	$stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 	    {
-        print_r($row);
         echo('<option value="'.$row['Country'].'">'.$row['Country'].'</option>');
-      }?>
-
+      }
+?>
 </select>
 
 
-
-<select name="Wine Price">
-  <option value="Price">Price</option>
-  <option value="HightoLow">HightoLow</option>
+<!--<select name="Wine Price">
+  <option value="HightoLow">HightoLow</option>-->
   <?php
-  $stmt = $conn->prepare("SELECT * from wine Order by WinePrice ASC" );
+  //$stmt = $conn->prepare("SELECT * from wine Order by WinePrice DESC" );
   ?>
-  <option value="LowtoHigh">LowtoHigh</option>
+  <!--<option value="LowtoHigh">LowtoHigh</option>-->
   <?php
-  $stmt = $conn->prepare("SELECT * from wine Order by WinePrice DESC" );
+  //$stmt = $conn->prepare("SELECT * from wine Order by WinePrice ASC" );
   ?>
 </select>
 </nav>
+
 
 <body>
 <div id="results">
@@ -166,7 +166,7 @@ include_once("connection.php");
 	    {//uses a hidden input which contains the ID of the wine selected
 			echo'<form action="addtobasket.php" method="post">';
 			echo('The name of the wine is '.$row["WineName"].'. The type of the wine is '.$row["WineCategory"].'. '.$row["WineDescription"].'. This wine is from '.$row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.'.' How many do you want to buy '."<input type='number' name='qty' min='0' max='100' value='0'>
-      <input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br></form>"); }?>
+      <input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br><br></form>"); }?>
 	    </div>
 
 <?php
@@ -182,14 +182,16 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 if (isset($_SESSION["wine"])){
 	//shows number in basket if basket exists
 	echo ("Basket contains ");
-	echo count($_SESSION["wine"])-1;
+	echo count($_SESSION["WineStock"])-1;
 	echo (" items<br>");
 	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
 
 
-?>   
+?>
+  
 <a href="checkout.php" >Checkout</a>
+
 
 </body> 
 </html>

@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['loggedin']))
+if(isset($_SESSION['loggedinID']))
 {
-    unset($_SESSION['loggedin']); //logs you out
+    unset($_SESSION['loggedinID']); //logs you out
 }
 if(isset($_SESSION['basket']))
 {
