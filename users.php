@@ -3,9 +3,9 @@
 <?php
 include_once("connection.php");
 $stmt = $conn->prepare("INSERT INTO TblUser 
-(PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,CardNumber,ExpiryDate,Admin)
+(PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,Balance,Admin)
 VALUES 
-(null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Admin)"); 
+(null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:Balance,:Admin)"); 
 ?>
 <!-- This means that all the varuable are set to 0 before the input apart from the PeopleID as this needs to increment every time -->
 
@@ -34,8 +34,7 @@ VALUES
   TelephoneNumber:<input type="text" name="TelephoneNumber"><br>
   Postcode:<input type="text" name="Postcode"><br>
   Address:<input type="text" name="Address"><br>
-  CardNumber:<input type="text" name="CardNumber"><br>
-  ExpiryDate:<input type="text" name="ExpiryDate"><br>
+  Balance:<input type="text" name="Balance"><br>
   Admin:<input type="radio" name="Admin" value="1" checked> <br>
   Customer:<input type="radio" name="Admin" value="0" checked> <br>
 
