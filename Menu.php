@@ -144,7 +144,6 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
         echo('<option value="'.$row['WineCategory'].'">'.$row['WineCategory'].'</option>');
       }?>
 
-
 </select>
 
 <select name="All" id="region" onchange="showresult2(this.value)">

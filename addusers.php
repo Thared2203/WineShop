@@ -5,9 +5,9 @@ array_map("htmlspecialchars", $_POST);
 
 header('Location:users.php');
 //print_r($_POST);
-$stmt = $conn->prepare("INSERT INTO People (PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,CardNumber,ExpiryDate,Admin)
+$stmt = $conn->prepare("INSERT INTO People (PeopleID,Email,Password,Forename,Surname,TelephoneNumber,Postcode,Address,Balance,Admin)
 VALUES 
-(null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:CardNumber,:ExpiryDate,:Admin)");
+(null,:Email,:Password,:Forename,:Surname,:TelephoneNumber,:Postcode,:Address,:Balance,:Admin)");
 
 // This allows me to get all the details of the person who is signing up which I can store
 
@@ -19,8 +19,7 @@ $stmt->bindParam(':Surname', $_POST["Surname"]);
 $stmt->bindParam(':TelephoneNumber', $_POST["TelephoneNumber"]);
 $stmt->bindParam(':Postcode', $_POST["Postcode"]);
 $stmt->bindParam(':Address', $_POST["Address"]);
-$stmt->bindParam(':CardNumber', $_POST["CardNumber"]);
-$stmt->bindParam(':ExpiryDate', $_POST["ExpiryDate"]);
+$stmt->bindParam(':Balance', $_POST["Balance"]);
 $stmt->bindParam(':Admin', $_POST["Admin"]);
 $stmt->execute();
 
