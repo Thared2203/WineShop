@@ -1,7 +1,7 @@
 <?php
 include_once("connection.php");
 
-//creates table called People
+//creates table called Peoples
 $hashed_password = password_hash("password", PASSWORD_DEFAULT);  //increases security
 $stmt = $conn->prepare("DROP TABLE IF EXISTS People;
 CREATE TABLE People 
