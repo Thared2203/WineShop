@@ -1,9 +1,11 @@
-
-
 <!DOCTYPE html>
 <html>
 <?php
 include_once("connection.php");
+session_start();
+if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
+  header('Location:menu2.php');
+}
 
 ?>
 
@@ -81,12 +83,27 @@ include_once("connection.php");
         <li class="nav-item">
           <a class="nav-link" href="users.php">Sign Up</a>
         </li>
-        <li class="nav-item">
+        <?php
+        if(isset($_SESSION['loggedin']))
+        {
+        ?>
+          <li class="nav-item">
           <a class="nav-link" href="login.php">Log in</a>
         </li>
-        <li class="nav-item">
+        <?php
+        }
+        ?>
+        <?php
+        if(!isset($_SESSION['loggedin']));
+        {
+        ?>
+          <li class="nav-item">
           <a class="nav-link" href="logout.php">Log out</a>
         </li>
+        <?php
+        }
+        ?>
+        
 </ul>
       <form class="d-flex">
           
@@ -106,6 +123,7 @@ include_once("connection.php");
   <div class="search-container">
     <form action="/action_page.php">
       <input type="text" placeholder="Search..." name="search">
+      
       <button type="submit">Submit</button>
     </form>
   </div>
@@ -119,7 +137,7 @@ include_once("connection.php");
 <option value="All">All</option>
 <?php 
   include_once('connection.php');
-  $stmt = $conn->prepare("SELECT DISTINCT WineCategory FROM Wine");
+  $stmt = $conn->prepare("SELECT DISTINCT WineCategory FROM Wine Order by WinePrice DESC");
 	$stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 	    {
@@ -133,7 +151,7 @@ include_once("connection.php");
 <option value="All">All</option>
 <?php 
   include_once('connection.php');
-  $stmt = $conn->prepare("SELECT DISTINCT Country FROM Wine");
+  $stmt = $conn->prepare("SELECT DISTINCT Country FROM Wine Order by WinePrice DESC");
 	$stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 	    {
@@ -187,11 +205,9 @@ if (isset($_SESSION["wine"])){
 	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
 
-
 ?>
   
 <a href="checkout.php" >Checkout</a>
-
 
 </body> 
 </html>

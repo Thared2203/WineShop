@@ -2,7 +2,6 @@
 include_once("connection.php");
 
 //creates table called People
-
 $hashed_password = password_hash("password", PASSWORD_DEFAULT);  //increases security
 $stmt = $conn->prepare("DROP TABLE IF EXISTS People;
 CREATE TABLE People 
@@ -14,8 +13,6 @@ Surname VARCHAR(30) NOT NULL,
 TelephoneNumber VARCHAR(11) NOT NULL,
 Postcode VARCHAR(8) NOT NULL,
 Address VARCHAR(50) NOT NULL,
-CardNumber VARCHAR(500) NOT NULL,
-ExpiryDate VARCHAR(5) NOT NULL,
 Admin Int(1) Not Null,
 Balance Decimal(8,2) Not Null)");
 $stmt->execute();
@@ -66,12 +63,10 @@ $stmt->closeCursor();
 
 $stmt = $conn->prepare("DROP TABLE IF EXISTS Baskets;
 CREATE TABLE Baskets
-(OrderID Int(10) UNSIGNED AUTO_INCREMENT ,
+(OrderID Int(10) NOT NULL,
 WineID Int(4) NOT NULL,
 Quantity Int(3) NOT NULL,
-PRIMARY KEY (OrderID, WineID)");
+PRIMARY KEY (OrderID, WineID))");
 $stmt->execute();
 $stmt->closeCursor();
-
-
 ?>
