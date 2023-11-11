@@ -18,5 +18,5 @@ $stmt = $conn->prepare("UPDATE wine SET WineStock=WineStock-:bought WHERE WineID
      $stmt->closeCursor();
 $conn=null;
 unset($_SESSION["wine"]);
-header("Location:Menu.php");;
+header("Location:Menu.php");
 ?>

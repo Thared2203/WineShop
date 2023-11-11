@@ -79,22 +79,27 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="users.php">Sign Up</a>
-        </li>
+  <ul class="navbar-nav me-auto">
         <?php
-        if(isset($_SESSION['loggedin']))
+        if(isset($_SESSION['loggedin']));
+        {
+        ?>
+         <li class="nav-item">
+           <a class="nav-link" href="users.php">Sign Up</a>
+         </li>
+        <?php
+        }
+        if(!isset($_SESSION['loggedin']));
         {
         ?>
           <li class="nav-item">
-          <a class="nav-link" href="login.php">Log in</a>
-        </li>
+            <a class="nav-link" href="login.php">Log in</a>
+          </li>
         <?php
         }
         ?>
         <?php
-        if(!isset($_SESSION['loggedin']));
+        if(isset($_SESSION['loggedin']));
         {
         ?>
           <li class="nav-item">

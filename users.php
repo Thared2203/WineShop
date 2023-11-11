@@ -40,16 +40,17 @@ VALUES
 
 
   <input type="submit" value="Sign up">
-</form>
-</div>
-<?php
-include_once('connection.php');
+  <?php
 
-$stmt = $conn->prepare("SELECT * FROM people");
-$stmt->execute();
+// Check if the form is submitted
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    include_once('connection.php');
 
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+    // Process your form data here
 
+    // Redirect to Menu.php after processing the form
+    header("Location: Menu.php");
+  }
 
 ?>
 </body>
