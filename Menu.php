@@ -80,34 +80,28 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
   <ul class="navbar-nav me-auto">
-        <?php
-        if(isset($_SESSION['loggedin']));
-        {
-        ?>
-         <li class="nav-item">
-           <a class="nav-link" href="users.php">Sign Up</a>
-         </li>
-        <?php
-        }
-        if(!isset($_SESSION['loggedin']));
-        {
-        ?>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">Log in</a>
-          </li>
-        <?php
-        }
-        ?>
-        <?php
-        if(isset($_SESSION['loggedin']));
-        {
-        ?>
-          <li class="nav-item">
-          <a class="nav-link" href="logout.php">Log out</a>
-        </li>
-        <?php
-        }
-        ?>
+  <?php
+
+  // Check if the user is logged in
+  if (isset($_SESSION['loggedinID'])) {
+      // User is logged in show the Log Out button
+  ?>
+      <li class="nav-item">
+          <a class="nav-link" href="logout.php">Log Out</a>
+      </li>
+      <?php
+  } else {
+      // User is not logged in
+      ?>
+      <li class="nav-item">
+          <a class="nav-link" href="users.php">Sign Up</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="login.php">Log In</a>
+      </li>
+    <?php
+}
+?>
         
 </ul>
       <form class="d-flex">
