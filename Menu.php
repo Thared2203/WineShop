@@ -22,7 +22,7 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-  function showresult(str) {
+  function showresult(str){
     if (str == "") {
         document.getElementById("results").innerHTML = "";
         return;
@@ -42,7 +42,7 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
         xmlhttp.open("GET","GetWineCategory.php?q="+str,true);
         xmlhttp.send();
     }
-}
+  }
 
 
 
@@ -66,8 +66,7 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
         xmlhttp.open("GET","getWineRegion.php?q="+str,true);
         xmlhttp.send();
     }
-}
-
+  }
 
 </script>
 </head>
@@ -129,7 +128,6 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 </div>
 </nav>
 
-
 <nav>
 
 <select name="All" id="category" onchange="showresult(this.value)">
@@ -158,7 +156,6 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 ?>
 </select>
 
-
 <!--<select name="Wine Price">
   <option value="HightoLow">HightoLow</option>-->
   <?php
@@ -170,7 +167,6 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
   ?>
 </select>
 </nav>
-
 
 <body>
 <div id="results">
@@ -193,8 +189,6 @@ $stmt->execute();
 
 while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 
-
-
 if (isset($_SESSION["wine"])){
 	//shows number in basket if basket exists
 	echo ("Basket contains ");
@@ -202,10 +196,7 @@ if (isset($_SESSION["wine"])){
 	echo (" items<br>");
 	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
-
 ?>
-  
 <a href="checkout.php" >Checkout</a>
-
 </body> 
 </html>

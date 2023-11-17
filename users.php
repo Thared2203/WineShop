@@ -40,9 +40,19 @@ VALUES
 
 
   <input type="submit" value="Sign up">
-  <?php
+  
+</form>
+</div>
+<?php
+include_once('connection.php');
 
-// Check if the form is submitted
+$stmt = $conn->prepare("SELECT * FROM people");
+$stmt->execute();
+
+while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+
+
+  // Check if the form is submitted
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once('connection.php');
 

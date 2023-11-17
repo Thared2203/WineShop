@@ -10,5 +10,5 @@ if(isset($_SESSION['basket']))
 {
     unset($_SESSION['basket']);
 }
-header('Location:addtobasket.php');
+header('Location:Menu.php');
 ?>
