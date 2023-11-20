@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
-<title>View Order</title>
+<title>Tuck</title>
     
 </head>
 <body>
+    <h1>Order history</h1>
+    
+       
+    <?php
+    include_once('connection.php');
+    session_start();
+    //select all orders made by logged un user and display in table
+    //need some funky join stuff to get details needed
+        $stmt = $conn->prepare("SELECT * FROM Orders WHERE PeopleID=:peopleid ORDER by OrderDate DESC");
+        $stmt->bindParam(':peopleid', $_SESSION["loggedin"]);
+        $stmt->execute();
+        if ($stmt->rowCount() > 0) {
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+            {echo'<form action="examineorder.php" method="post">';
+                
+                $date = date("d/m/Y H:i:s", strtotime($row["OrderDate"]));
+                $time = date("H:i:s", strtotime($row["OrderDate"]));
+                echo("Order number ".$row["OrderID"].' on '.$date." at ".$time." ");
+                echo("<input type='submit' value='View Order'><input type='hidden' name='OrderID' value=".$row['OrderID']."><br></form>");
 
-<?php
-echo ("<h2> Order ".$_POST["OrderID"]." contained the following items</h2>");
-session_start();
-print_r($_SESSION);
-include_once('connection.php');
-array_map("htmlspecialchars", $_POST);
-$total=0;
-    $stmt = $conn->prepare("SELECT wine.WineName as tn, wine.WinePrice as tp, baskets.Quantity as qty FROM baskets INNER JOIN wine on wine.WineID = wine.WineID where wine.OrderID=:orderid");
-    $stmt->bindParam(':orderid', $_POST["OrderID"]);
-    $stmt->execute();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-        {
-    $total=$total+($row["qty"]*$row["tp"]);
-        echo($row["qty"]." x ".$row["tn"]." at ".$row["tp"]."<br>");
+                //echo("<tr><td>".$row["OrderID"]."</td><td> ".$row["Dateoforder"]." </td></tr>");
+                
+            }
+        }else{
+            echo("none<br>");
         }
-echo("Total spent £".number_format($total,2)."<br>");
-
-?>
-
+    
+    ?>
+    </table>
+    <a href="Menu.php">Back to menu</a>
 </body>
 </html>
