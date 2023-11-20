@@ -101,13 +101,14 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
     <?php
 }
 ?>
+  <li class="nav-item">
+    <a class="nav-link" href="ViewOrder.php">View Order</a>
+  </li>
+
+
         
 </ul>
-      <form class="d-flex">
-          
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
-      </form>
+      
     </div>
   </div>
 </nav>
