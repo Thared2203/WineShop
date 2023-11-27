@@ -1,28 +1,54 @@
+<?php
+session_start(); 
+if (!isset($_SESSION['loggedinID']))
+{   
+   $_SESSION['backURL'] = $_SERVER['REQUEST_URI'];
+    header("Location:login.php");
+}
+?>
 <!DOCTYPE html>
 <html>
-<title>View Order</title>
+<title>Order</title>
+<link rel="stylesheet" href="styles.css">
     
 </head>
 <body>
+<div class="header">
 
+<h1>Previous Orders</h1>
+
+</div>
+    
 <?php
-echo ("<h2> Order ".$_POST["OrderID"]." contained the following items</h2>");
-session_start();
-print_r($_SESSION);
 include_once('connection.php');
-array_map("htmlspecialchars", $_POST);
-$total=0;
-    $stmt = $conn->prepare("SELECT wine.WineName as tn, wine.WinePrice as tp, baskets.Quantity as qty FROM baskets INNER JOIN wine on wine.WineID = wine.WineID where wine.OrderID=:orderid");
-    $stmt->bindParam(':orderid', $_POST["OrderID"]);
-    $stmt->execute();
-while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-        {
-    $total=$total+($row["qty"]*$row["tp"]);
-        echo($row["qty"]." x ".$row["tn"]." at ".$row["tp"]."<br>");
-        }
-echo("Total spent £".number_format($total,2)."<br>");
 
+#print_r($_SESSION);
+
+	array_map("htmlspecialchars", $_POST);
+    //create order
+	
+    $total=0;
+    $stmt = $conn->prepare("SELECT wine.WineName as wn, wine.WinePrice as wp, baskets.Quantity as qty , orders.OrderID as oid 
+    FROM  baskets  
+    INNER JOIN wine on wine.WineID = baskets.WineID 
+    INNER JOIN orders on orders.OrderID = baskets.OrderID
+    INNER JOIN people on orders.PeopleID = people.PeopleID
+
+    where people.PeopleID=:currentuser");
+	#$stmt = $conn->prepare("SELECT wine.WineName as wn, wine.WinePrice as wp, baskets.Quantity as qty FROM baskets INNER JOIN wine on wine.WineID = baskets.WineID where baskets.OrderID=:orderid");
+	#$stmt->bindParam(':orderid', $_POST["OrderID"]);
+    $stmt->bindParam(':currentuser', $_SESSION["loggedinID"]);
+	$stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
+		{
+            #print_r($row);
+            #echo("<br>");
+            $total=$total+($row["qty"]*$row["wp"]);
+			echo("Order number".$row["oid"]." - " .$row["qty"]." x ".$row["wn"]." at ".$row["wp"]."<br>");
+		}
+    echo("Total spent £".number_format($total,2)."<br>");
+    
 ?>
-
+<a href="menu.php">Back to menu</a>
 </body>
 </html>

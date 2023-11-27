@@ -12,6 +12,7 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 <head>
     
   <title>Wine Shop</title>
+  <link rel="stylesheet" href="styles.css">
   <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,6 +72,10 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 </script>
 </head>
 <body>
+<div class="header">
+
+<h1>Buy Fine Wine</h1>
+</div>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand">Simon Tilley's Wine Shop</a>
@@ -102,22 +107,15 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 }
 ?>
   <li class="nav-item">
-    <a class="nav-link" href="ViewOrder.php">View Order</a>
+    <a class="nav-link" href="ExamineOrder.php">Examine Order</a>
   </li>
 
-
-        
-</ul>
-      
+</ul>    
     </div>
   </div>
 </nav>
-<div class="header">
 
-<h1>Buy Fine Wine</h1>
-
-</div>
-<nav>
+<!-- <nav>
 <div class="topnav">
   <div class="search-container">
     <form action="/action_page.php">
@@ -127,8 +125,8 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
     </form>
   </div>
 </div>
-</nav>
-
+</nav> -->
+<br>
 <nav>
 
 <select name="All" id="category" onchange="showresult(this.value)">

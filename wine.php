@@ -22,6 +22,7 @@ VALUES
 <head>
     
     <title>Add Wine</title>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,12 +31,12 @@ VALUES
 <body>
 <div class="header">
 
-<h1>Add new Wine</h1>
+<h1>Add new Wines</h1>
 
 </div>
 
 <div class="body">
-<form action="addWine.php" method="Post">
+<form action="addWine.php" method="Post" enctype="multipart/form-data">
  
   WineName:<input type="text" name="WineName"><br>
   WineCategory:<input type="text" name="WineCategory"><br>
@@ -43,6 +44,7 @@ VALUES
   WinePrice:<input type="text" name="WinePrice"><br>
   WineStock:<input type="text" name="WineStock"><br>
   Country:<input type="text" name="Country"><br>
+  Image: <input type="file" id="piccy" name="piccy" accept="image/*"><br>
   <input type="submit" value="Add Wine">
 </form>
 </div>

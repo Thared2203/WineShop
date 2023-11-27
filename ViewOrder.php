@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-<title>Tuck</title>
+<title>Order</title>
+<link rel="stylesheet" href="styles.css">
     
 </head>
 <body>
@@ -24,7 +25,7 @@
                 echo("Order number ".$row["OrderID"].' on '.$date." at ".$time." ");
                 echo("<input type='submit' value='View Order'><input type='hidden' name='OrderID' value=".$row['OrderID']."><br></form>");
 
-                //echo("<tr><td>".$row["OrderID"]."</td><td> ".$row["Dateoforder"]." </td></tr>");
+                echo("<tr><td>".$row["OrderID"]."</td><td> ".$row["OrderDate"]." </td></tr>");
                 
             }
         }else{

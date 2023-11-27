@@ -9,6 +9,7 @@ include_once("connection.php");
 <head>
     
     <title>Wine Shop</title>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +21,10 @@ include_once("connection.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<div class="header">
+<h1>Admin's home page</h1>
+
+</div>
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" >Simon Tilley's Wine Shop</a>
@@ -41,21 +46,14 @@ include_once("connection.php");
           <a class="nav-link" href="wine.php">Add Wine</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="text" placeholder="Search">
-        <button class="btn btn-primary" type="button">Search</button>
-      </form>
     </div>
   </div>
 </nav>
 
 </style>
-</head>
-<body>
-<div class="header">
-<h1>Admin's home page</h1>
 
-</div>
+<body>
+
 
 </body>
 </html>

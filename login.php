@@ -2,15 +2,18 @@
 <html>
 
 <head>
-
-<title> Login </title>
-
+<title> Wine Shop </title>
+<link rel="stylesheet" href="styles.css">
+        
 </head>
 
 <body>
-    <div>            
-        <h1>Login</h1><br>
-    </div>
+<div class="header">
+
+<h1>Previous Orders</h1>
+
+</div>
+
     <div>
             <p>Please enter your credentials to login</p>       
             <form action="loginprocess.php" method= "POST">
