@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-
+session_start();
 include_once("connection.php");
 
 ?>
@@ -33,15 +33,18 @@ include_once("connection.php");
     </button>
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="users.php">Sign Up</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="login.php">Log in</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="logout.php">Log out</a>
-        </li>
+<?php
+
+ // Check if the user is logged in
+ if (isset($_SESSION['loggedinID'])) {
+  // User is logged in show the Log Out button
+?>
+  <li class="nav-item">
+      <a class="nav-link" href="logout.php">Log Out</a>
+  </li>
+  <?php
+}
+?>
         <li class="nav-item">
           <a class="nav-link" href="wine.php">Add Wine</a>
         </li>
@@ -49,11 +52,9 @@ include_once("connection.php");
     </div>
   </div>
 </nav>
-
 </style>
 
 <body>
-
 
 </body>
 </html>

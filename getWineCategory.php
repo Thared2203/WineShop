@@ -49,5 +49,6 @@ $conn=null;
 
 
 ?>
+<a href="checkout.php" >Checkout</a>
 </body>
 </html>

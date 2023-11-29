@@ -3,6 +3,7 @@
 <?php
 include_once("connection.php");
 session_start();
+#forwards the admin to the other menu
 if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
   header('Location:menu2.php');
 }
@@ -173,13 +174,21 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
   include_once('connection.php');
   $stmt = $conn->prepare("SELECT * FROM Wine");
 	$stmt->execute();
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
-	    {//uses a hidden input which contains the ID of the wine selected
-			echo'<form action="addtobasket.php" method="post">';
-			echo('The name of the wine is '.$row["WineName"].'. The type of the wine is '.$row["WineCategory"].'. '.$row["WineDescription"].'. This wine is from '.$row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.'.' How many do you want to buy '."<input type='number' name='qty' min='0' max='100' value='0'>
-      <input type='submit' value='Add Wine'><input type='hidden' name='WineID' value=".$row['WineID']."><br><br></form>"); }?>
-	    </div>
-
+	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+    // Uses a hidden input which contains the ID of the wine selected
+    echo '<form action="addtobasket.php" method="post">';
+    echo 'The name of the wine is ' . $row["WineName"] . '. The type of the wine is ' . $row["WineCategory"] . '. ' . $row["WineDescription"] . '. This wine is from ' . $row["Country"] . '. It costs £' . $row["WinePrice"] . '. There is a maximum of ' . $row["WineStock"] . ' bottles to be sold.'; 
+    ?>
+    <br>
+    <?php
+    echo '<img src="/WineShop/images/' . $row["piccy"] . '"class="WineImage"><br>';
+    echo 'How many do you want to buy <input type="number" name="qty" min="0" max="100" value="0"><br>';
+    echo '<input type="submit" value="Add Wine"><input type="hidden" name="WineID" value="' . $row['WineID'] . '"></form>';
+    ?>
+    <br>
+    <?php
+}
+?>
 <?php
 include_once('connection.php');
 
