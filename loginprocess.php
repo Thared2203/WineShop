@@ -5,7 +5,7 @@ array_map("htmlspecialchars", $_POST);
 print_r($_SESSION);
 //header('Location:login.php');
 
-$stmt = $conn->prepare("SELECT * FROM People WHERE Forename =:Forename ;" );
+$stmt = $conn->prepare("SELECT * FROM People WHERE Forename =:Forename" );
 
 $stmt->bindParam(':Forename', $_POST['Forename']);
 $stmt->execute();

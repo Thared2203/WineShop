@@ -48,6 +48,12 @@ include_once("connection.php");
         <li class="nav-item">
           <a class="nav-link" href="wine.php">Add Wine</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="ExamineOrder2.php">View Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Accounts.php">View Accounts</a>
+        </li>
       </ul>
     </div>
   </div>
