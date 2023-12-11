@@ -18,7 +18,7 @@ $hashed= $row['Password'];
             $_SESSION['loggedinID']=$row["PeopleID"];
             $_SESSION['Admin']=$row["Admin"];
             if (!isset($_SESSION['backURL'])){
-                $backURL= "Menu.php"; //Sets a default destination if no BackURL set (parent dir)
+                $backURL= "menu.php"; //Sets a default destination if no BackURL set (parent dir)
             }else{
                 $backURL=$_SESSION['backURL'];
             }

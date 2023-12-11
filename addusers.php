@@ -23,11 +23,11 @@ $stmt->bindParam(':Balance', $_POST["Balance"]);
 $stmt->bindParam(':Admin', $_POST["Admin"]);
 $stmt->execute();
 
+}
 
-    }
-    catch(PDOException $e)
-	    {
-		    echo "error".$e->getMessage();
-	    }
-    $conn=null; 
-    ?>
+catch(PDOException $e)
+	{
+		echo "error".$e->getMessage();
+	}
+$conn=null;
+?>

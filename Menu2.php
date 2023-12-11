@@ -1,7 +1,18 @@
+<?php
+session_start();
+//print_r($_SESSION);
+if($_SESSION["Admin"]!=1){
+  header('Location:menu.php');
+  echo ("redirecting");
+
+if($_SESSION["Admin"]=1){
+  header('Location:menu2.php');
+}
+}
+?>
 <!DOCTYPE html>
 <html>
 <?php
-session_start();
 include_once("connection.php");
 
 ?>
@@ -49,7 +60,7 @@ include_once("connection.php");
           <a class="nav-link" href="wine.php">Add Wine</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="ExamineOrder2.php">View Orders</a>
+          <a class="nav-link" href="ExamineOrder2.php">Examine Orders</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="Accounts.php">View Accounts</a>

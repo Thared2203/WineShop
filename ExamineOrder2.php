@@ -10,7 +10,8 @@ if (!isset($_SESSION['loggedinID']))
 <html>
 <title>Orders</title>
 <link rel="stylesheet" href="styles.css">
-    
+<meta charset="utf-8">
+
 </head>
 <body>
 <div class="header">

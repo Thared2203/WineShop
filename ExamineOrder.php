@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedinID']))
 <html>
 <title>Order</title>
 <link rel="stylesheet" href="styles.css">
-    
+ 
 </head>
 <body>
 <div class="header">

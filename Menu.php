@@ -13,7 +13,7 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 <head>
     
   <title>Wine Shop</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <meta charset="utf-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -128,8 +128,8 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 </div>
 </nav> -->
 <br>
-<nav>
 
+<nav>
 <select name="All" id="category" onchange="showresult(this.value)">
 <option value="All">All</option>
 <?php 
@@ -156,6 +156,7 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 ?>
 </select>
 
+
 <!--<select name="Wine Price">
   <option value="HightoLow">HightoLow</option>-->
   <?php
@@ -168,7 +169,6 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 </select>
 </nav>
 
-<body>
 <div id="results">
   <?php 
   include_once('connection.php');

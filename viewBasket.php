@@ -1,17 +1,27 @@
+<?php
+session_start(); 
+if (!isset($_SESSION['loggedinID']))
+{   
+   $_SESSION['backURL'] = $_SERVER['REQUEST_URI'];
+    header("Location:login.php");
+}
+?>
 <!DOCTYPE html>
-
 <html>    
 <title>Wine</title>
+
+
 </head>
 <body>
 <div class="header">
-    <h1>Basket contains</h1>
+    <h2>Basket contains</h2>
+    
 </div>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 <div class="body">
     
     <?php
-    include_once('connection.php');
-    
+    include_once('connection.php'); 
     
     //session_start();
     //print_r($_SESSION);
