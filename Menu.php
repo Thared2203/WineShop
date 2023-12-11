@@ -154,19 +154,10 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
         echo('<option value="'.$row['Country'].'">'.$row['Country'].'</option>');
       }
 ?>
-</select>
 
-
-<!--<select name="Wine Price">
-  <option value="HightoLow">HightoLow</option>-->
-  <?php
-  //$stmt = $conn->prepare("SELECT * from wine Order by WinePrice DESC" );
-  ?>
-  <!--<option value="LowtoHigh">LowtoHigh</option>-->
-  <?php
-  //$stmt = $conn->prepare("SELECT * from wine Order by WinePrice ASC" );
-  ?>
 </select>
+<a href="checkout.php">Checkout</a>
+
 </nav>
 
 <div id="results">
@@ -205,6 +196,6 @@ if (isset($_SESSION["wine"])){
 	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
 ?>
-<a href="checkout.php" >Checkout</a>
+
 </body> 
 </html>
