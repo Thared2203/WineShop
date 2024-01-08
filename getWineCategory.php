@@ -1,34 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Wines</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-</head>
-<body>
-
 <?php
-
 $q = $_GET['q'];
-
 //echo($q);
-include_once ("connection.php");
-if ($q=="All"){
-  $stmt = $conn->prepare("SELECT * from wine WHERE WineStock>0 Order by WinePrice DESC" );
-  $stmt->execute();
-  while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    //uses a hidden input which contains the ID of the wine selected
-    echo'<form action="addtobasket.php" method="post">';
-    echo'The name of the wine is '.$row["WineName"].'. The type of the wine is '.$row["WineCategory"].'. '.$row["WineDescription"].'. This wine is from '.$row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.';        
-  
-    echo"<br>";
-    
-    echo '<img src="/WineShop/images/' . $row["piccy"] . '"class="WineImage"><br>';
-    echo 'How many do you want to buy <input type="number" name="qty" min="0" max="100" value="0"><br>';
-    echo '<input type="submit" value="Add Wine"><input type="hidden" name="WineID" value="'.$row['WineID']. '"></form>';
-  }
+include_once("connection.php");
+
+if ($q == "All") {
+    $stmt = $conn->prepare("SELECT * FROM wine WHERE WineStock > 0 ORDER BY WinePrice DESC");
+    $stmt->execute();
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+        <div class="col mb-4">
+            <div class="card h-100 d-flex flex-column">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $row["WineName"] ?></h5>
+                    <p class="card-text">
+                        Colour: <?= $row["WineCategory"] ?><br>
+                        Description: <?= $row["WineDescription"] ?><br>
+                        Country: <?= $row["Country"] ?><br>
+                        Price: £<?= $row["WinePrice"] ?><br>
+                        Stock: <?= $row["WineStock"] ?> bottles available
+                    </p>
+                    <img src="/WineShop/images/<?= $row["piccy"] ?>" class="img-fluid WineImage" alt="Wine Image"><br>
+                    <div class="form-group mt-auto">
+                        Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>
+                        <button type="submit" class="btn btn-primary">Add Wine</button>
+                        <input type="hidden" name="WineID" value="<?= $row['WineID'] ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
 }
 else{
  
@@ -36,17 +38,29 @@ else{
   $stmt->bindParam(':category', $q);
   $stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    // Uses a hidden input which contains the ID of the wine selected
-    echo '<form action="addtobasket.php" method="post">';
-    echo 'The name of the wine is '.$row["WineName"] . '. The type of the wine is ' . $row["WineCategory"].'.'. $row["WineDescription"] .'. This wine is from '. $row["Country"].'. It costs £'.$row["WinePrice"].'. There is a maximum of '.$row["WineStock"].' bottles to be sold.'; 
-    
-    echo"<br>";
-
-    echo '<img src="/WineShop/images/' . $row["piccy"] . '"class="WineImage"><br>';
-    echo 'How many do you want to buy <input type="number" name="qty" min="0" max="100" value="0"><br>';
-    echo '<input type="submit" value="Add Wine"><input type="hidden" name="WineID" value="' . $row['WineID'] . '"></form>';
-    echo"<br>";
-  }
+    ?>
+    <div class="col mb-4">
+        <div class="card h-100 d-flex flex-column">
+            <div class="card-body">
+                <h5 class="card-title"><?= $row["WineName"] ?></h5>
+                <p class="card-text">
+                    Colour: <?= $row["WineCategory"] ?><br>
+                    Description: <?= $row["WineDescription"] ?><br>
+                    Country: <?= $row["Country"] ?><br>
+                    Price: £<?= $row["WinePrice"] ?><br>
+                    Stock: <?= $row["WineStock"] ?> bottles available
+                </p>
+                <img src="/WineShop/images/<?= $row["piccy"] ?>" class="img-fluid WineImage" alt="Wine Image"><br>
+                <div class="form-group mt-auto">
+                    Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>
+                    <button type="submit" class="btn btn-primary">Add Wine</button>
+                    <input type="hidden" name="WineID" value="<?= $row['WineID'] ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
 }
 ?>
 <?php

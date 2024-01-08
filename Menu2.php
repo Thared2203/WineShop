@@ -1,18 +1,7 @@
-<?php
-session_start();
-//print_r($_SESSION);
-if($_SESSION["Admin"]!=1){
-  header('Location:menu.php');
-  echo ("redirecting");
-
-if($_SESSION["Admin"]=1){
-  header('Location:menu2.php');
-}
-}
-?>
 <!DOCTYPE html>
 <html>
 <?php
+session_start();
 include_once("connection.php");
 
 ?>

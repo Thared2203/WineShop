@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <title>Wine</title>
     
@@ -29,4 +29,4 @@ if (isset($_SESSION["wine"])){
 ?>   
 <a href="checkout.php">Checkout</a>
 </body>
-</html>
+</html> -->

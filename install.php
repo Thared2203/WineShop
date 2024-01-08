@@ -27,7 +27,8 @@ WineCategory VARCHAR(20) NOT NULL,
 WineDescription VARCHAR(500) NOT NULL,
 WinePrice DECIMAL(6,2) NOT NULL,
 WineStock INT NOT NULL,
-Country VARCHAR(15) NOT NULL)");
+Country VARCHAR(15) NOT NULL,
+piccy VARCHAR(255) NOT NULL)");
 $stmt->execute();
 $stmt->closeCursor();
 

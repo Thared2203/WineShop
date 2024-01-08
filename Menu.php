@@ -6,6 +6,7 @@ session_start();
 #forwards the admin to the other menu
 if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
   header('Location:menu2.php');
+  exit();
 }
 
 ?>
@@ -139,7 +140,8 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC))
 	    {
         echo('<option value="'.$row['WineCategory'].'">'.$row['WineCategory'].'</option>');
-      }?>
+      }
+?>
 
 </select>
 
@@ -160,25 +162,45 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 
 </nav>
 
-<div id="results">
-  <?php 
-  include_once('connection.php');
-  $stmt = $conn->prepare("SELECT * FROM Wine");
-	$stmt->execute();
-	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-    // Uses a hidden input which contains the ID of the wine selected
-    echo '<form action="addtobasket.php" method="post">';
-    echo 'The name of the wine is ' . $row["WineName"] . '. The type of the wine is ' . $row["WineCategory"] . '. ' . $row["WineDescription"] . '. This wine is from ' . $row["Country"] . '. It costs £' . $row["WinePrice"] . '. There is a maximum of ' . $row["WineStock"] . ' bottles to be sold.'; 
-    ?>
-    <br>
-    <?php
-    echo '<img src="/WineShop/images/' . $row["piccy"] . '"class="WineImage"><br>';
-    echo 'How many do you want to buy <input type="number" name="qty" min="0" max="100" value="0"><br>';
-    echo '<input type="submit" value="Add Wine"><input type="hidden" name="WineID" value="' . $row['WineID'] . '"></form>';
-    ?>
-    <br>
-    <?php
+<div id="results" class="container">
+  <div class="row row-cols-1 row-cols-md-4">
+    <?php 
+      include_once('connection.php');
+      $stmt = $conn->prepare("SELECT * FROM Wine");
+      $stmt->execute();
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<div class="col mb-4">';
+        echo '<div class="card h-100 d-flex flex-column">';
+          echo '<div class="card-body">';
+          echo '<h5 class="card-title">' . $row["WineName"] . '</h5>';
+          echo '<p class="card-text">';
+          echo 'Colour: ' . $row["WineCategory"] . '<br>';
+          echo 'Description: ' . $row["WineDescription"] . '<br>';
+          echo 'Country: ' . $row["Country"] . '<br>';
+          echo 'Price: £' . $row["WinePrice"] . '<br>';
+          echo 'Stock: ' . $row["WineStock"] . ' bottles available</p>';
+          ?>
+          <img src="/WineShop/images/<?php echo $row["piccy"]; ?>" class="img-fluid WineImage" alt="Wine Image"><br>
+          <?php
+          echo '<div class="form-group mt-auto">';
+          echo 'Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>';
+          echo '<button type="submit" class="btn btn-primary">Add Wine</button>';
+          echo '<input type="hidden" name="WineID" value="' . $row['WineID'] . '">';
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
 }
+      ?>
+    </div>
+<div>
+
+</div>
+</div>
+</div>
+    <br>
+    <?php
+
 ?>
 <?php
 include_once('connection.php');

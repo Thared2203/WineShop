@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <?php
 include_once("connection.php");
@@ -74,4 +74,4 @@ echo($row["OrderID"].' '.$row["WineID"].' '.$row["Quantity"]."<br>");
 }
 ?>
 </body>
-</html>
+</html> -->

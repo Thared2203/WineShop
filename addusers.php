@@ -29,5 +29,6 @@ catch(PDOException $e)
 	{
 		echo "error".$e->getMessage();
 	}
+	header("Location: users.php");
 $conn=null;
 ?>
