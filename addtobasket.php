@@ -13,6 +13,7 @@ if (!isset($_SESSION["basket"])){
 
 //deal with if already in array
 $found=FALSE;
+$_SESSION["itemsinbasket"]=0;
 foreach ($_SESSION["basket"] as &$entry){//& allows us to change
     
     if ($entry["WineID"]===$_POST["WineID"]){
@@ -20,10 +21,12 @@ foreach ($_SESSION["basket"] as &$entry){//& allows us to change
         #increase basket by existing qty
         $entry["qty"]=$entry["qty"]+$_POST["qty"];   
     }
+    $_SESSION["itemsinbasket"]=$_SESSION["itemsinbasket"]+$entry["qty"];
 }
 #echo($found."<br>");
 if ($found===FALSE){
     array_push($_SESSION["basket"],array("WineID"=>$_POST["WineID"],"qty"=>$_POST["qty"]));
+    $_SESSION["itemsinbasket"]=$_SESSION["itemsinbasket"]+$_POST["qty"];
 }
 header('Location: Menu.php')
 ?>

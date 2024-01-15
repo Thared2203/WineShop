@@ -46,9 +46,6 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
         xmlhttp.send();
     }
   }
-
-
-
   function showresult2(str) {
     if (str == "") {
         document.getElementById("results").innerHTML = "";
@@ -70,9 +67,9 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
         xmlhttp.send();
     }
   }
-
 </script>
 </head>
+
 <body>
 <div class="header">
 
@@ -94,7 +91,14 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
   ?>
       <li class="nav-item">
           <a class="nav-link" href="logout.php">Log Out</a>
+          
       </li>
+      <a class="nav-link" href="checkout.php">
+      <?php if (isset ($_SESSION["itemsinbasket"])){
+   echo ($_SESSION["itemsinbasket"]);
+  };
+
+?></a>
       <?php
   } else {
       // User is not logged in
@@ -159,16 +163,21 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
 
 </select>
 <a href="checkout.php">Checkout</a>
+<?php if (isset ($_SESSION["itemsinbasket"])){
+   echo ($_SESSION["itemsinbasket"]);
+  };
 
+?>
 </nav>
 
 <div id="results" class="container">
   <div class="row row-cols-1 row-cols-md-4">
     <?php 
       include_once('connection.php');
-      $stmt = $conn->prepare("SELECT * FROM Wine");
+      $stmt = $conn->prepare("SELECT * FROM Wine WHERE WineStock > 0");
       $stmt->execute();
       while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        echo '<form action="addtobasket.php" method="post">';
         echo '<div class="col mb-4">';
         echo '<div class="card h-100 d-flex flex-column">';
           echo '<div class="card-body">';
@@ -183,13 +192,14 @@ if(isset ($_SESSION["Admin"]) && $_SESSION["Admin"]==1){
           <img src="/WineShop/images/<?php echo $row["piccy"]; ?>" class="img-fluid WineImage" alt="Wine Image"><br>
           <?php
           echo '<div class="form-group mt-auto">';
-          echo 'Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>';
+          echo 'Quantity: <input type="number" class="form-control" name="qty" min="0" max="WineStock" value="0"><br>';
           echo '<button type="submit" class="btn btn-primary">Add Wine</button>';
           echo '<input type="hidden" name="WineID" value="' . $row['WineID'] . '">';
           echo '</div>';
           echo '</div>';
           echo '</div>';
           echo '</div>';
+          echo '</form>';
 }
       ?>
     </div>

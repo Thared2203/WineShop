@@ -1,3 +1,5 @@
+<div id="results" class="container">
+  <div class="row row-cols-1 row-cols-md-4">
 <?php
 $q = $_GET['q'];
 //echo($q);
@@ -52,7 +54,7 @@ else{
                 </p>
                 <img src="/WineShop/images/<?= $row["piccy"] ?>" class="img-fluid WineImage" alt="Wine Image"><br>
                 <div class="form-group mt-auto">
-                    Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>
+                    Quantity: <input type="number" class="form-control" name="qty" min="0" max="1000" value="0"><br>
                     <button type="submit" class="btn btn-primary">Add Wine</button>
                     <input type="hidden" name="WineID" value="<?= $row['WineID'] ?>">
                 </div>

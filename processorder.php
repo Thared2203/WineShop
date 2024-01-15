@@ -66,7 +66,7 @@ echo("<br>");
             print_r($wine);
             echo("<br>");
         }
-       # $stmt = $conn->prepare("INSERT INTO baskets SET Quanitity WHERE Quantity =:Quanitity");
+        $stmt = $conn->prepare("INSERT INTO baskets SET Quanitity WHERE Quantity =:Quanitity");
       
 
         // Clear the basket and redirect

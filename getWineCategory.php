@@ -1,3 +1,5 @@
+<div id="results" class="container">
+  <div class="row row-cols-1 row-cols-md-4">
 <?php
 $q = $_GET['q'];
 //echo($q);
@@ -22,7 +24,7 @@ if ($q == "All") {
                     </p>
                     <img src="/WineShop/images/<?= $row["piccy"] ?>" class="img-fluid WineImage" alt="Wine Image"><br>
                     <div class="form-group mt-auto">
-                        Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>
+                        Quantity: <input type="number" class="form-control" name="qty" min="0" max="1000" value="0"><br>
                         <button type="submit" class="btn btn-primary">Add Wine</button>
                         <input type="hidden" name="WineID" value="<?= $row['WineID'] ?>">
                     </div>
@@ -33,8 +35,7 @@ if ($q == "All") {
     }
 }
 else{
- 
-  $stmt = $conn->prepare("SELECT * from wine WHERE WineCategory =:category and WineStock>0 Order by WinePrice DESC" );
+ $stmt = $conn->prepare("SELECT * from wine WHERE WineCategory =:category and WineStock>0 Order by WinePrice DESC" );
   $stmt->bindParam(':category', $q);
   $stmt->execute();
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -79,7 +80,5 @@ if (isset($_SESSION["wine"])){
 	echo ("<a href=viewbasket.php>View basket contents</a>");
 }
 ?>
-
-<a href="checkout.php" >Checkout</a>
 </body>
 </html>

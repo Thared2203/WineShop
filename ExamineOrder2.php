@@ -29,7 +29,8 @@ include_once('connection.php');
     //create order
 	
     $total=0;
-    $stmt = $conn->prepare("SELECT people.Forename as fn, people.Surname as sn, wine.WineName as wn, wine.WinePrice as wp, baskets.Quantity as qty , orders.OrderID as oid 
+    $stmt = $conn->prepare("SELECT people.Forename as fn, people.Surname as sn, 
+    wine.WineName as wn, wine.WinePrice as wp, baskets.Quantity as qty , orders.OrderID as oid 
     FROM  baskets  
     INNER JOIN wine on wine.WineID = baskets.WineID 
     INNER JOIN orders on orders.OrderID = baskets.OrderID
@@ -44,7 +45,8 @@ include_once('connection.php');
             #print_r($row);
             #echo("<br>");
             $total=$total+($row["qty"]*$row["wp"]);
-			echo($row["fn"]. " ".$row["sn"]. " Order number" .$row["oid"]." - " .$row["qty"]." x ".$row["wn"]." for ".$row["wp"]."<br>");
+			echo($row["fn"]. "    ".$row["sn"]. " Order number " .$row["oid"]." - " 
+            .$row["qty"]." x ".$row["wn"]." for ".$row["wp"]."<br>");
 		}
     echo("Total recieved £".number_format($total,2)."<br>");
     
