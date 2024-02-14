@@ -1,4 +1,4 @@
-<!-- The following code appears to be an HTML form for user sign-up with embedded PHP code for database interaction. -->
+<!-- The following code is an HTML form for user sign-up with embedded PHP code for database interaction. -->
 
 <!DOCTYPE html>
 <html>
