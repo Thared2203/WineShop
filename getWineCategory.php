@@ -97,7 +97,7 @@
               <img src="/WineShop/images/<?= $row["piccy"] ?>" class="img-fluid WineImage" alt="Wine Image">
               <!-- Wine image -->
               <br>
-              <div class="form-group mt-auto">
+              <div class="form-group image.pngmt-auto">
                 <!-- Form group for quantity input -->
                 Quantity: <input type="number" class="form-control" name="qty" min="0" max="100" value="0"><br>
                 <!-- Quantity input -->
