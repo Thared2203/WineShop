@@ -131,7 +131,6 @@ if(isset($_SESSION["Admin"]) && $_SESSION["Admin"] == 1){
   </div>
 </nav>
 
-<!-- Search section -->
 <br>
 <nav>
   <!-- Dropdown for wine category -->
@@ -196,7 +195,7 @@ if(isset($_SESSION["Admin"]) && $_SESSION["Admin"] == 1){
       <img src="/WineShop/images/<?php echo $row["piccy"]; ?>" class="img-fluid WineImage" alt="Wine Image"><br>
       <?php
       echo '<div class="form-group mt-auto">';
-      echo 'Quantity: <input type="number" class="form-control" name="qty" min="0" max="' . $row["WineStock"] . '" value="0"><br>';
+      echo 'Quantity: <input type="number" class="form-control" name="qty" min="0" max="100"' . $row["WineStock"] . '" value="0"><br>';
       echo '<button type="submit" class="btn btn-primary">Add Wine</button>';
       echo '<input type="hidden" name="WineID" value="' . $row['WineID'] . '">';
       echo '</div>';

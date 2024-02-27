@@ -2,27 +2,33 @@
 <html>
 
 <head>
-<title> Wine Shop </title>
-<link rel="stylesheet" href="styles.css">
-
+    <title> Wine Shop </title>
+    <!-- Linking to an external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-<div class="header">
+    <!-- Header section -->
+    <div class="header">
+        <h1>Login</h1>
+    </div>
 
-<h1>Login</h1>
-
-</div>
-
+    <!-- Login form -->
     <div>
-        <p>Please enter your credentials to login</p>       
-        <form action="loginprocess.php" method= "POST">
-        <!-- When the person has signed in the only thing they need to remeber 
-        is their forename and password. This allows a quick and easy way to log in -->
-        <input type="text" placeholder="Forename" name="Forename"><br>
-        <input type="password" placeholder="password" name="Pword"><br>
-        <input type="submit" value="Login">
+        <!-- Instruction for users -->
+        <p>Please enter your credentials to login</p>
+
+        <!-- Form for user login, action points to 'loginprocess.php' for processing -->
+        <form action="loginprocess.php" method="POST">
+            <!-- Input field for user's forename -->
+            <!-- Users only need to remember their forename and password for login -->
+            <input type="text" placeholder="Forename" name="Forename"><br>
+            <!-- Input field for user's password -->
+            <input type="password" placeholder="password" name="Pword"><br>
+            <!-- Submit button to initiate login -->
+            <input type="submit" value="Login">
         </form>
     </div>
 </body>
-</html>   
+
+</html>  
